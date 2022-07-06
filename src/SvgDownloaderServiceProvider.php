@@ -2,9 +2,9 @@
 
 namespace Kriosmane\SvgDownloader;
 
+use Kriosmane\SvgDownloader\Commands\SvgDownloaderCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Kriosmane\SvgDownloader\Commands\SvgDownloaderCommand;
 
 class SvgDownloaderServiceProvider extends PackageServiceProvider
 {

@@ -3,8 +3,8 @@
 namespace Kriosmane\SvgDownloader\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Kriosmane\SvgDownloader\SvgDownloaderServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
