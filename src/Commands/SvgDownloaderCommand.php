@@ -2,8 +2,8 @@
 
 namespace Kriosmane\SvgDownloader\Commands;
 
-use Kriosmane\SvgDownloader\SvgDownloader;
 use Illuminate\Console\Command;
+use Kriosmane\SvgDownloader\SvgDownloader;
 
 class SvgDownloaderCommand extends Command
 {
@@ -13,17 +13,14 @@ class SvgDownloaderCommand extends Command
 
     public function handle(): int
     {
-
-        $svg =  new SvgDownloader();
+        $svg = new SvgDownloader();
 
         $svg->fetchIcons();
 
         $svg->filter('author', 'Google');
 
-        foreach($svg->getIcons() as $icon)
-        {
-           $icon->save();
-
+        foreach ($svg->getIcons() as $icon) {
+            $icon->save();
         }
 
         return self::SUCCESS;

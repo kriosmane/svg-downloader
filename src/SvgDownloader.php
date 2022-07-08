@@ -5,40 +5,37 @@ namespace Kriosmane\SvgDownloader;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
-use Kriosmane\SvgDownloader\Icon;
-
 /**
- * 
+ *
  */
 class SvgDownloader
 {
-
     /**
-     * 
+     *
      */
     protected $remote_url = '';
 
     /**
-     * 
+     *
      */
     protected $meta = 'meta.json';
 
     /**
-     * 
+     *
      */
     protected $storage = null;
 
     /**
-     * 
+     *
      */
     protected $icons = null;
 
     /**
-     * 
+     *
      */
 
     /**
-     * 
+     *
      */
     public function __construct()
     {
@@ -46,24 +43,21 @@ class SvgDownloader
     }
 
     /**
-     * 
+     *
      */
-    protected function _init(Array $disk = [])
+    protected function _init(array $disk = [])
     {
         $this->remote_url = config('svg-downloader.remote_url');
 
         $driver = config('svg-downloader.disk.driver');
         $root = config('svg-downloader.disk.root');
 
-        if(!empty($disk))
-        {
-            if(isset($disk['driver']))
-            {
+        if (! empty($disk)) {
+            if (isset($disk['driver'])) {
                 $driver = $disk['driver'];
             }
 
-            if(isset($disk['root']))
-            {
+            if (isset($disk['root'])) {
                 $root = $disk['root'];
             }
         }
@@ -72,12 +66,10 @@ class SvgDownloader
             'driver' => $driver,
             'root' => $root,
         ]);
-
     }
 
-
     /**
-     * 
+     *
      */
     public function getIcons()
     {
@@ -85,7 +77,7 @@ class SvgDownloader
     }
 
     /**
-     * 
+     *
      */
     public function fetchIcons()
     {
@@ -93,54 +85,43 @@ class SvgDownloader
 
         $this->icons = collect();
 
-        foreach($icons as $icon)
-        {
+        foreach ($icons as $icon) {
             $this->icons->add(new Icon($icon, $this->remote_url.'svg/', $this->storage));
         }
-        
     }
 
     /**
-     * 
+     *
      */
     public function filter($key, $value)
     {
         $this->icons = $this->icons->filter(function ($item, $index) use ($key, $value) {
             return $item->$key == $value;
         });
-
     }
 
     /**
-     * 
+     *
      */
-    public function downloadIcons(Array $filters = [])
+    public function downloadIcons(array $filters = [])
     {
-
         $icons = $this->fetchAll();
 
-        if($icons)
-        {
-            
+        if ($icons) {
         }
-        
     }
 
     /**
-     * 
+     *
      */
     private function fetchAll()
     {
         $response = Http::get($this->remote_url.$this->meta);
 
         if ($response->successful()) {
-
             return $response->json();
         }
 
         return null;
     }
-
-
-
 }
