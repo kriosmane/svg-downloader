@@ -7,9 +7,9 @@ use Kriosmane\SvgDownloader\SvgDownloader;
 
 class SvgDownloaderCommand extends Command
 {
-    public $signature = 'svg-downloader';
+    public $signature = 'svg-downloader {--A|author= : Filter by author}';
 
-    public $description = 'My command';
+    protected $description = 'SVG - Material Design Icons';
 
     public function handle(): int
     {
@@ -17,8 +17,15 @@ class SvgDownloaderCommand extends Command
 
         $svg->fetchIcons();
 
-        $svg->filter('author', 'Google');
+        /**
+         * 
+         */
+        if($this->option('author'))
+        {
+            $svg->filter('author', $this->option('author'));
+        }
 
+        
         foreach ($svg->getIcons() as $icon) {
             $icon->save();
         }
