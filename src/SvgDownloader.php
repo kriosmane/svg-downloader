@@ -31,7 +31,7 @@ class SvgDownloader
     protected $icons = null;
 
     /**
-     * 
+     *
      */
     protected $root = '';
 
@@ -53,11 +53,10 @@ class SvgDownloader
      */
     protected function _init($disk = [])
     {
-        
         $this->remote_url = config('svg-downloader.remote_url');
 
         $driver = config('svg-downloader.disk.driver');
-        $root   = config('svg-downloader.disk.root');
+        $root = config('svg-downloader.disk.root');
 
         if (! empty($disk)) {
             if (isset($disk['driver'])) {
@@ -86,7 +85,7 @@ class SvgDownloader
     }
 
     /**
-     * 
+     *
      */
     public function getTotal()
     {
@@ -94,7 +93,7 @@ class SvgDownloader
     }
 
     /**
-     * 
+     *
      */
     public function getStorage()
     {
@@ -102,7 +101,7 @@ class SvgDownloader
     }
 
     /**
-     * 
+     *
      */
     public function getRoot()
     {

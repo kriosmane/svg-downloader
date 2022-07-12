@@ -15,19 +15,16 @@ class SvgDownloaderCommand extends Command
 
     public function handle(): int
     {
-
         $disk = [];
 
         /**
-         * 
+         *
          */
-        if($this->option('path'))
-        {
+        if ($this->option('path')) {
             $path = $this->option('path');
 
             $disk['driver'] = 'local';
             $disk['root'] = base_path($path);
-
         }
 
 
@@ -42,26 +39,24 @@ class SvgDownloaderCommand extends Command
             $svg->filter('author', $this->option('author'));
         }
 
-        
+
         $this->info(sprintf('Fetched %d svg icons', $svg->getTotal()));
         $this->info(sprintf('Icons will be stored in %s', $svg->getRoot()));
 
         if ($this->confirm('Do you wish to continue?', true)) {
-
             $bar = $this->output->createProgressBar($svg->getTotal());
 
             $bar->start();
-    
-    
+
+
             foreach ($svg->getIcons() as $icon) {
-    
                 $icon->save();
-    
+
                 $bar->advance();
             }
-    
+
             $bar->finish();
-    
+
             return self::SUCCESS;
         }
 
