@@ -2,7 +2,6 @@
 # SVG - Material Design Icons Downloader
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kriosmane/svg-downloader.svg?style=flat-square)](https://packagist.org/packages/kriosmane/svg-downloader)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/kriosmane/svg-downloader/run-tests?label=tests)](https://github.com/kriosmane/svg-downloader/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/kriosmane/svg-downloader/Check%20&%20fix%20styling?label=code%20style)](https://github.com/kriosmane/svg-downloader/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/kriosmane/svg-downloader.svg?style=flat-square)](https://packagist.org/packages/kriosmane/svg-downloader)
 
