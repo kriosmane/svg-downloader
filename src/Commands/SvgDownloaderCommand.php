@@ -36,10 +36,9 @@ class SvgDownloaderCommand extends Command
         $svg->fetchIcons();
 
         /**
-         * 
+         *
          */
-        if($this->option('author'))
-        {
+        if ($this->option('author')) {
             $svg->filter('author', $this->option('author'));
         }
 

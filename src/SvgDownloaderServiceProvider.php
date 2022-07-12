@@ -19,7 +19,7 @@ class SvgDownloaderServiceProvider extends PackageServiceProvider
             ->name('svg-downloader')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_svg-downloader_table')
+            //->hasMigration('create_svg-downloader_table')
             ->hasCommand(SvgDownloaderCommand::class);
     }
 }
