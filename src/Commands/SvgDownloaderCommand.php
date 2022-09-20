@@ -46,7 +46,7 @@ class SvgDownloaderCommand extends Command
          *
          */
         if ($this->option('prefix')) {
-            $prefix =  $this->option('prefix');
+            $prefix = $this->option('prefix');
         }
 
 
@@ -61,7 +61,6 @@ class SvgDownloaderCommand extends Command
 
 
             foreach ($svg->getIcons() as $icon) {
-
                 $icon->save(strtolower($prefix));
 
                 $bar->advance();
