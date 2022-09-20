@@ -9,7 +9,8 @@ class SvgDownloaderCommand extends Command
 {
     public $signature = 'svg-downloader 
                                     {--A|author= : Filter by author}
-                                    {--P|path= : Destination path relative to base_path}';
+                                    {--D|dir= :  Destination dir relative to base_path}
+                                    {--P|prefix= : prefix to add icon name}';
 
     protected $description = 'SVG - Material Design Icons';
 
@@ -17,11 +18,13 @@ class SvgDownloaderCommand extends Command
     {
         $disk = [];
 
+        $prefix = '';
+
         /**
          *
          */
-        if ($this->option('path')) {
-            $path = $this->option('path');
+        if ($this->option('dir')) {
+            $path = $this->option('dir');
 
             $disk['driver'] = 'local';
             $disk['root'] = base_path($path);
@@ -39,6 +42,14 @@ class SvgDownloaderCommand extends Command
             $svg->filter('author', $this->option('author'));
         }
 
+        /**
+         *
+         */
+        if ($this->option('prefix')) {
+            $prefix =  $this->option('prefix');
+        }
+
+
 
         $this->info(sprintf('Fetched %d svg icons', $svg->getTotal()));
         $this->info(sprintf('Icons will be stored in %s', $svg->getRoot()));
@@ -50,7 +61,8 @@ class SvgDownloaderCommand extends Command
 
 
             foreach ($svg->getIcons() as $icon) {
-                $icon->save();
+
+                $icon->save(strtolower($prefix));
 
                 $bar->advance();
             }

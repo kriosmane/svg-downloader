@@ -107,10 +107,10 @@ class Icon
      *
      *
      */
-    public function save()
+    public function save($prefix = '')
     {
         $contents = file_get_contents($this->endpoint.$this->name.$this->extension);
 
-        $this->storage->put($this->name.$this->extension, $contents);
+        $this->storage->put($prefix.$this->name.$this->extension, $contents);
     }
 }
